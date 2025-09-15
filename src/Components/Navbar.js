@@ -7,7 +7,9 @@ export default function Navbar() {
       <Link to="/counsellorList">
         <Button>Counsellors</Button>
       </Link>
-      <Button>Resouces</Button>
+      <Link to="/resouces">
+        <Button>Resources</Button>
+      </Link>
       <Button>About Us</Button>
       <Button>Login/SignUp</Button>
       <Button>Chat</Button>

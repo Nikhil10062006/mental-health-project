@@ -1,21 +1,36 @@
+// src/App.jsx
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
-import Home from "./Components/Home";
+import Home from "./Components/Home"; // your existing Home
 import CounsellorList from "./Components/CounsellorList";
+import ResourcesPage from "./Components/ResourcesPage"
 import CounsellorDetail from "./Components/CounsellorDetail";
 import ReviewForm from "./Components/ReviewForm";
-import ResourcesPage from "./Components/ResourcesPage";
+import Login from "./Components/Login";
+import { AuthProvider } from "./Context/AuthContext";
+import ProtectedRoute from "./Components/ProtectedRoute";
+
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/counsellorList" element={<CounsellorList />} />
-        <Route path="/resources" element={<ResourcesPage />} />
-        <Route path="/counsellorDetail/:id" element={<CounsellorDetail />} />
-        <Route path="/counsellorDetail/:id/review" element={<ReviewForm />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/counsellorList" element={<CounsellorList />} />
+          <Route path="/counsellorDetail/:id" element={<CounsellorDetail />} />
+          <Route
+            path="/counsellorDetail/:id/review"
+            element={
+              <ProtectedRoute>
+                <ReviewForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }

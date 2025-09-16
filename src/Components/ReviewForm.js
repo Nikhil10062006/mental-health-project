@@ -57,32 +57,42 @@ export default function ReviewForm() {
       )}
       <h2>Submit your review</h2>
       <form onSubmit={handleSubmitform}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <textarea
-          placeholder="Review"
-          value={comments}
-          onChange={(e) => setComments(e.target.value)}
-        />
-        <div className="stars">
-          {[1, 2, 3, 4, 5].map((star) => (
-            <span
-              key={star}
-              onClick={() => setRating(star)}
-              style={{
-                cursor: "pointer",
-                fontSize: "24px",
-                color: star <= rating ? "gold" : "gray",
-              }}
-            >
-              ★
-            </span>
-          ))}
-        </div>
+        <label htmlFor="Name">
+          Name :
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <label htmlFor="Comments">
+          Comments :{" "}
+          <textarea
+            placeholder="Comments"
+            value={comments}
+            onChange={(e) => setComments(e.target.value)}
+          />
+        </label>
+        <label htmlFor="Ratings">
+          Ratings :{" "}
+          <div className="stars">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span
+                key={star}
+                onClick={() => setRating(star)}
+                style={{
+                  cursor: "pointer",
+                  fontSize: "24px",
+                  color: star <= rating ? "gold" : "gray",
+                }}
+              >
+                ★
+              </span>
+            ))}
+          </div>
+        </label>
+
         <button
           type="submit"
           disabled={

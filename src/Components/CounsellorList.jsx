@@ -1,7 +1,7 @@
 import React from "react";
 import counsellors from "../Data/counsellors";
 import { Link } from "react-router-dom";
-
+import Navbar from "./Navbar";
 export default function CounsellorList() {
   const list = counsellors.map((counsellor) => (
     <li key={counsellor.id}>
@@ -18,6 +18,7 @@ export default function CounsellorList() {
 
   return (
     <div>
+      <Navbar />
       <h1>List of counsellors</h1>
       <ul>{list}</ul>
     </div>

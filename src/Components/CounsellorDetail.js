@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import counsellors from "../Data/counsellors";
 import { collection, query, where, orderBy, onSnapshot } from "firebase/firestore";
 import { db } from "../Firebase";
-
+import Navbar from "./Navbar";
 export default function CounsellorDetail() {
   const { id } = useParams();
   const cid = parseInt(id, 10);
@@ -25,6 +25,7 @@ export default function CounsellorDetail() {
 
   return (
     <div>
+         <Navbar />
       <h2>{counsellor.name}</h2>
       <p>{counsellor.specialization}</p>
       <p>{counsellor.position}</p>

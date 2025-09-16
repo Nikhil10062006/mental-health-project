@@ -11,7 +11,9 @@ export default function Navbar() {
         <Button>Resources</Button>
       </Link>
       <Button>About Us</Button>
-      <Button>Login/SignUp</Button>
+      <Link to="/login">
+       <Button>Login/SignUp</Button>
+      </Link>
       <Button>Chat</Button>
       <Button>Profile</Button>
       <Button>

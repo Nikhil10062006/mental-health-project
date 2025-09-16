@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import "./index.css";
 import Home from "./Components/Home";
 import CounsellorList from "./Components/CounsellorList";
 import CounsellorDetail from "./Components/CounsellorDetail";

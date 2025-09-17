@@ -8,6 +8,7 @@ import InteractiveTools from "./tools";
 import ArticlesSection from "./articles";
 import Footer from "./footer";
 
+
 const ResourcesPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">

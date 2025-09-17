@@ -10,6 +10,7 @@ import ReviewForm from "./Components/ReviewForm";
 import Login from "./Components/Login";
 import { AuthProvider } from "./Context/AuthContext";
 import ProtectedRoute from "./Components/ProtectedRoute";
+import Profile from "./Components/Profile";
 export default function App() {
   return (
     <AuthProvider>
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/counsellorList" element={<CounsellorList />} />
           <Route path="/counsellorDetail/:id" element={<CounsellorDetail />} />
+          <Route path="/profile" element={<Profile />} />
           <Route
             path="/chatroom"
             element={

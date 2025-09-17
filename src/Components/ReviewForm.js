@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
-import { db } from "../Firebase";
+import { db } from "../firebase";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function ReviewForm() {

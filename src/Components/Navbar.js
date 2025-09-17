@@ -14,11 +14,12 @@ export default function Navbar() {
       <Link to="/login">
        <Button>Login/SignUp</Button>
       </Link>
-      <Button>Chat</Button>
-      <Button>Profile</Button>
-      <Button>
-        <i className="fa-solid fa-moon"></i>Dark Mode
-      </Button>
+      <Link to="/chatroom">
+       <Button>Chat</Button>
+      </Link>
+      <Link to="/profile">
+       <Button>Profile</Button>
+      </Link>
     </div>
   );
 }

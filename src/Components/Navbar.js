@@ -14,8 +14,9 @@ export default function Navbar() {
       <Link to="/login">
        <Button>Login/SignUp</Button>
       </Link>
-      <Button>Chat</Button>
-      <Button>Profile</Button>
+      <Link to="/chatroom">
+       <Button>Chat</Button>
+      </Link>
       <Button>
         <i className="fa-solid fa-moon"></i>Dark Mode
       </Button>

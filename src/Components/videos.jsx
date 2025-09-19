@@ -3,7 +3,7 @@ import { useState , useEffect } from "react";
 import videos from "../assets/videos/videolinks.json";
 import { Heart } from "lucide-react";
 import { Heart as HeartFilled } from "lucide-react";
-import { auth, db } from "../Firebase";
+import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { doc, setDoc, deleteDoc, getDoc, collection, getDocs } from "firebase/firestore";
 
@@ -27,28 +27,32 @@ const VideoSection = () => {
   }, [auth.currentUser]);
 
     const toggleSave = async (video) => {
-    const user = auth.currentUser;
-    if (!user) {
-      navigate("/login");
-      return;
-    }
+  const user = auth.currentUser;
+  if (!user) {
+    navigate("/login");
+    return;
+  }
 
-    const videoRef = doc(db, "users", user.uid, "savedVideos", video.id.toString());
-    const existing = await getDoc(videoRef);
+  const videoId = video.id.toString();   // Always convert once
+  const videoRef = doc(db, "users", user.uid, "savedVideos", videoId);
+  const existing = await getDoc(videoRef);
 
-    if (existing.exists()) {
-      await deleteDoc(videoRef);
-      setSaved((prev) => prev.filter((vid) => vid !== video.id.toString()));
-    } else {
-      await setDoc(videoRef, {
-        id: video.id,
-        title: video.title,
-        link: video.link,
-        savedAt: new Date(),
-      });
-      setSaved((prev) => [...prev, video.id.toString()]);
-    }
-  };
+  if (existing.exists()) {
+    await deleteDoc(videoRef);
+    setSaved((prev) => prev.filter((vid) => vid !== videoId));
+    console.log("Removed:", videoId);
+  } else {
+    await setDoc(videoRef, {
+      id: videoId,
+      title: video.title,
+      link: video.link,
+      savedAt: new Date(),
+    });
+    setSaved((prev) => [...prev, videoId]);
+    console.log("Saved:", videoId);
+  }
+};
+
 
 
 
@@ -75,13 +79,16 @@ const VideoSection = () => {
           ></iframe>
 
            <button
-              onClick={() => toggleSave(video.id)}
+              onClick={() => {
+                toggleSave(video);
+                console.log("Clicked:", video);
+              }}
               className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow hover:bg-gray-100 transition"
             >
-              {saved.includes(video.id) ? (
+              {saved.includes(video.id.toString()) ? (
                 <HeartFilled className="w-5 h-5 text-red-500 fill-red-500" />
               ) : (
-                <Heart className="w-5 h-5 text-grey-500" />
+                <Heart className="w-5 h-5 text-gray-500" />
               )}
             </button>
           </div>

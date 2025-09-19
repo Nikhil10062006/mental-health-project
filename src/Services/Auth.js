@@ -6,7 +6,7 @@ import {
   browserSessionPersistence,
   signOut as firebaseSignOut,
 } from "firebase/auth";
-import { auth, googleProvider } from "../Firebase";
+import { auth, googleProvider } from "../firebase";
 
 export async function signInWithGoogle(remember) {
   await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);

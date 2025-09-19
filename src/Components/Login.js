@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithGoogle, logOut } from "../Services/Auth";
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "../Firebase";
+import { db } from "../firebase";
 
 export default function Login() {
   const [rememberMe, setRememberMe] = useState(false);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import counsellors from "../Data/counsellors";
 import { collection, query, where, orderBy, onSnapshot } from "firebase/firestore";
-import { db } from "../Firebase";
+import { db } from "../firebase";
 import Navbar from "./Navbar";
 export default function CounsellorDetail() {
   const { id } = useParams();

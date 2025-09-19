@@ -2,6 +2,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home"; // your existing Home
+import Chat from "./Components/Chat";
 import CounsellorList from "./Components/CounsellorList";
 import ResourcesPage from "./Components/ResourcesPage"
 import CounsellorDetail from "./Components/CounsellorDetail";
@@ -17,6 +18,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/chat" element={<Chat />} /> 
           <Route path="/counsellorList" element={<CounsellorList />} />
           <Route path="/counsellorDetail/:id" element={<CounsellorDetail />} />
           <Route

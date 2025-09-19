@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { auth, db } from "../firebase";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, getDoc, updateDoc, getDocs } from "firebase/firestore";
 import { logOut } from "../Services/Auth";
 import "./Profile.css";
 export default function Profile() {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
+  const [savedVideos, setSavedVideos] = useState([]);
+  const [savedAudios, setSavedAudios] = useState([]);
+  const [savedMessages, setSavedMessages] = useState([]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -16,8 +19,21 @@ export default function Profile() {
         setUserData(snap.data());
       }
     };
+
+    const fetchSavedVideos = async () => {
+      if (!auth.currentUser) return;
+      const ref = collection(db, "users", auth.currentUser.uid,"savedVideos");
+      const snap = await getDocs(ref);
+      if (!(snap.empty)) {
+        setSavedVideos(snap.docs.map(doc => doc.data()));
+      }
+    };
+
     fetchUserData();
+    fetchSavedVideos();
   }, []);
+  console.log(userData);
+  console.log(savedVideos);
 
   const handleMoodChange = async (newMood) => {
     if (!auth.currentUser) return;
@@ -65,8 +81,16 @@ export default function Profile() {
 
       <h3>Saved Videos</h3>
       <ul>
-        {userData.savedVideos?.map((video, i) => (
-          <li key={i}><video controls width="250" src={video}></video></li>
+        {savedVideos?.map((video, i) => (
+          <li key={i}>
+            <iframe
+            key={video.id}
+            className="rounded-lg relative w-[30%] h-[100%]"
+            src={video.link}
+            title={video.title}
+            allowFullScreen
+          ></iframe>
+            </li>
         ))}
       </ul>
 

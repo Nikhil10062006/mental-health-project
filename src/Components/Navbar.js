@@ -10,6 +10,9 @@ export default function Navbar() {
       <Link to="/resources">
         <Button>Resources</Button>
       </Link>
+
+  <Link to="/chat">🤖 Chatbot Support</Link>
+
       <Button>About Us</Button>
       <Link to="/login">
        <Button>Login/SignUp</Button>

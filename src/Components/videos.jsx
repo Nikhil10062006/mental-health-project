@@ -3,7 +3,7 @@ import { useState , useEffect } from "react";
 import videos from "../assets/videos/videolinks.json";
 import { Heart } from "lucide-react";
 import { Heart as HeartFilled } from "lucide-react";
-import { auth, db } from "../Firebase";
+import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { doc, setDoc, deleteDoc, getDoc, collection, getDocs } from "firebase/firestore";
 
@@ -75,7 +75,7 @@ const VideoSection = () => {
           ></iframe>
 
            <button
-              onClick={() => toggleSave(video.id)}
+              onClick={() => toggleSave(video)}
               className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow hover:bg-gray-100 transition"
             >
               {saved.includes(video.id) ? (

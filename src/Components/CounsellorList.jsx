@@ -1,5 +1,6 @@
 import React from "react";
 import counsellors from "../Data/counsellors";
+import Footer from './footer';
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 export default function CounsellorList() {
@@ -21,6 +22,7 @@ export default function CounsellorList() {
       <Navbar />
       <h1>List of counsellors</h1>
       <ul>{list}</ul>
+      <Footer/>
     </div>
   );
 }

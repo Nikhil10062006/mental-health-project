@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Footer from './footer';
 import { db, auth } from "../firebase";
 import { collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "firebase/firestore";
 export default function ChatRoom() {
@@ -38,6 +39,7 @@ export default function ChatRoom() {
         placeholder="Type your message..."
       />
       <button onClick={sendMessage}>Send</button>
+      <Footer/>
     </div>
   );
 }

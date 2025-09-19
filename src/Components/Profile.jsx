@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { auth, db } from "../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { logOut } from "../Services/Auth";
-
+import "./Profile.css";
 export default function Profile() {
   const [userData, setUserData] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
